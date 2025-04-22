@@ -1,7 +1,7 @@
-import { fetchLeaderboard } from '../content.js';
-import { localize } from '../util.js';
+import { fetchLeaderboard } from "../content.js";
+import { localize } from "../util.js";
 
-import Spinner from '../components/Spinner.js';
+import Spinner from "../components/Spinner.js";
 
 export default {
     components: {
@@ -26,7 +26,11 @@ export default {
                 </div>
                 <div class="board-container">
                     <table class="board">
-                        <tr v-for="(ientry, i) in leaderboard">
+                        <tr v-for="(ientry, i) in leaderboard" :key="i" :class="{
+                            'rank-1': i === 0,
+                            'rank-2': i === 1,
+                            'rank-3': i === 2
+                        }">
                             <td class="rank">
                                 <p class="type-label-lg">#{{ i + 1 }}</p>
                             </td>
